@@ -65,7 +65,7 @@ void SoftRenderer::Update2D(float InDeltaSeconds)
 	// 게임 로직의 로컬 변수
 	static float MoveSpeed = 100.0f;
 
-	Vector2 InputVector = Vector2(input.GetAxis(InputAxis::XAxis), input.GetAxis(InputAxis::YAxis));
+	Vector2 InputVector = Vector2(input.GetAxis(InputAxis::XAxis), input.GetAxis(InputAxis::YAxis)).GetNormalize();
 	Vector2 DeltaPosition = InputVector * MoveSpeed * InDeltaSeconds;
 
 	// 물체의 최종 상태 설정
@@ -83,24 +83,34 @@ void SoftRenderer::Render2D()
 	DrawGizmo2D();
 
 	// 렌더링 로직의 로컬 변수
+	static float Radius = 50.0f;
+	static std::vector<Vector2> Circles;
 
+	// 최초에 한번 반지름보다 긴 벡터를 모아 컨테이너에 담는다.
+	if (Circles.empty())
+	{
+		for (float x = -Radius; x <= Radius; ++x)
+		{
+			for (float y = -Radius; y <= Radius; ++y)
+			{
+				Vector2 PointToTest = Vector2(x, y);
+				float SquaredLength = PointToTest.SizeSquared();
+				if (SquaredLength <= Radius * Radius)
+				{
+					Circles.push_back(Vector2(x, y));
+				}
+			}
+		}
+	}
 
-	// 밝은 회색의 선을 사용해 평행한 벡터를 표현
-	static float LineLength = 500.0f;
-	Vector2 LineStart = CurrentPosition * LineLength;
-	Vector2 LineEnd = CurrentPosition * -LineLength;
-	r.DrawLine(LineStart, LineEnd, LinearColor::LightGray);
+	// 원을 구성하는 벡터를 모두 붉은 색으로 표시한다. 
+	for (const auto& i : Circles)
+	{
+		r.DrawPoint(i + CurrentPosition, LinearColor::Red);
+	}
 
-	// 벡터를 파란색 픽셀로 표현
-	r.DrawPoint(CurrentPosition, LinearColor::Blue);
-	r.DrawPoint(CurrentPosition + Vector2::UnitX, LinearColor::Blue);
-	r.DrawPoint(CurrentPosition - Vector2::UnitX, LinearColor::Blue);
-	r.DrawPoint(CurrentPosition + Vector2::UnitY, LinearColor::Blue);
-	r.DrawPoint(CurrentPosition - Vector2::UnitY, LinearColor::Blue);
-	r.DrawPoint(CurrentPosition + Vector2::One, LinearColor::Blue);
-	r.DrawPoint(CurrentPosition - Vector2::One, LinearColor::Blue);
-	r.DrawPoint(CurrentPosition + Vector2(1.f, -1.f), LinearColor::Blue);
-	r.DrawPoint(CurrentPosition - Vector2(1.f, -1.f), LinearColor::Blue);
+	// 원의 중심 좌표를 우상단에 출력
+	r.PushStatisticText("Coordinate : " + CurrentPosition.ToString());
 }
 
 // 메시를 그리는 함수
