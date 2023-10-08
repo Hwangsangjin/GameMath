@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Precompiled.cpp" />
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\2D\CameraObject.cpp">
+      <Filter>Private\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\2D\GameEngine.cpp">
+      <Filter>Private\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\2D\GameObject.cpp">
+      <Filter>Private\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\2D\Mesh.cpp">
+      <Filter>Private\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\2D\TransformComponent.cpp">
+      <Filter>Private\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\3D\Bone.cpp">
+      <Filter>Private\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\3D\CameraObject.cpp">
+      <Filter>Private\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\3D\GameEngine.cpp">
+      <Filter>Private\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\3D\GameObject.cpp">
+      <Filter>Private\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\3D\Mesh.cpp">
+      <Filter>Private\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\3D\TransformComponent.cpp">
+      <Filter>Private\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\InputManager.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\GameMath\Source\Runtime\Engine\Private\Texture.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Precompiled.h" />
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\2D\CameraObject.h">
+      <Filter>Public\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\2D\GameEngine.h">
+      <Filter>Public\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\2D\GameObject.h">
+      <Filter>Public\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\2D\Mesh.h">
+      <Filter>Public\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\2D\TransformComponent.h">
+      <Filter>Public\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\3D\Bone.h">
+      <Filter>Public\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\3D\CameraObject.h">
+      <Filter>Public\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\3D\GameEngine.h">
+      <Filter>Public\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\3D\GameObject.h">
+      <Filter>Public\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\3D\Mesh.h">
+      <Filter>Public\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\3D\Resources.h">
+      <Filter>Public\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\3D\TransformComponent.h">
+      <Filter>Public\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\EngineHeaders.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\EngineInterface.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\InputManager.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\Public\Texture.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_c_lexer.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_connected_components.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_divide.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_ds.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_dxt.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_easy_font.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_herringbone_wang_tile.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_image.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_image_resize.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_image_write.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_include.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_leakcheck.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_perlin.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_rect_pack.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_sprintf.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_textedit.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_tilemap_editor.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_truetype.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stb_voxel_render.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\GameMath\Source\Runtime\Engine\ThirdParty\Stb\stretchy_buffer.h">
+      <Filter>ThirdParty\Stb</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Private">
+      <UniqueIdentifier>{B50F2CE3-E21D-32E5-98E5-A6406CAFCDB7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\2D">
+      <UniqueIdentifier>{EE160E0E-9278-37E0-A6C8-1DCDC0629ED9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\3D">
+      <UniqueIdentifier>{5A2802B4-C944-33FA-950A-BECE74166B5C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public">
+      <UniqueIdentifier>{58B7D3F1-BE9D-34F5-83FF-852E01DBAF0A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\2D">
+      <UniqueIdentifier>{B4EA3E3C-D872-3804-8EEF-A9609275E5FD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\3D">
+      <UniqueIdentifier>{B98FB5EA-9C2B-3169-9233-7AFF7088947D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{950C0CA8-511A-3491-B771-894C2E68E190}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\Stb">
+      <UniqueIdentifier>{556AA974-D457-3D4D-8289-691D90E27BFC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
