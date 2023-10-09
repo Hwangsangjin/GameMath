@@ -53,7 +53,8 @@ void SoftRenderer::LoadScene2D()
 }
 
 // 게임 로직과 렌더링 로직이 공유하는 변수
-Vector2 CurrentPosition(100.0f, 100.0f);
+Vector2 CurrentPosition;
+float CurrentScale = 10.0f;
 
 // 게임 로직을 담당하는 함수
 void SoftRenderer::Update2D(float InDeltaSeconds)
@@ -64,12 +65,17 @@ void SoftRenderer::Update2D(float InDeltaSeconds)
 
 	// 게임 로직의 로컬 변수
 	static float MoveSpeed = 100.0f;
+	static float ScaleMin = 5.0f;
+	static float ScaleMax = 20.0f;
+	static float ScaleSpeed = 20.0f;
 
 	Vector2 InputVector = Vector2(input.GetAxis(InputAxis::XAxis), input.GetAxis(InputAxis::YAxis)).GetNormalize();
 	Vector2 DeltaPosition = InputVector * MoveSpeed * InDeltaSeconds;
+	float DeltaScale = input.GetAxis(InputAxis::ZAxis) * ScaleSpeed * InDeltaSeconds;
 
 	// 물체의 최종 상태 설정
 	CurrentPosition += DeltaPosition;
+	CurrentScale = Math::Clamp(CurrentScale + DeltaScale, ScaleMin, ScaleMax);
 }
 
 // 렌더링 로직을 담당하는 함수
@@ -86,31 +92,31 @@ void SoftRenderer::Render2D()
 	static float Radius = 50.0f;
 	static std::vector<Vector2> Circles;
 
-	// 최초에 한번 반지름보다 긴 벡터를 모아 컨테이너에 담는다.
-	if (Circles.empty())
+	// 하트를 구성하는 점 생성
+	if (Hearts.empty())
 	{
-		for (float x = -Radius; x <= Radius; ++x)
+		for (float rad = 0.0f; rad < Math::TwoPI; rad += Increment)
 		{
-			for (float y = -Radius; y <= Radius; ++y)
-			{
-				Vector2 PointToTest = Vector2(x, y);
-				float SquaredLength = PointToTest.SizeSquared();
-				if (SquaredLength <= Radius * Radius)
-				{
-					Circles.push_back(Vector2(x, y));
-				}
-			}
+			float sin = sinf(rad);
+			float cos = cosf(rad);
+			float cos2 = cosf(2 * rad);
+			float cos3 = cosf(3 * rad);
+			float cos4 = cosf(4 * rad);
+			float x = 16.0f * sin * sin * sin;
+			float y = 13 * cos - 5 * cos2 - 2 * cos3 - cos4;
+			Hearts.push_back(Vector2(x, y));
 		}
 	}
 
-	// 원을 구성하는 벡터를 모두 붉은 색으로 표시한다. 
-	for (const auto& i : Circles)
+	// 하트를 구성하는 모든 점에 현재 위치와 크기 값을 반영한 후 파란색으로 표시한다. 
+	for (const auto& i : Hearts)
 	{
-		r.DrawPoint(i + CurrentPosition, LinearColor::Red);
+		r.DrawPoint(i * CurrentScale + CurrentPosition, LinearColor::Blue);
 	}
 
-	// 원의 중심 좌표를 우상단에 출력
-	r.PushStatisticText("Coordinate : " + CurrentPosition.ToString());
+	// 현재 위치와 스케일을 화면에 출력
+	r.PushStatisticText(std::string("Position : ") + CurrentPosition.ToString());
+	r.PushStatisticText(std::string("Scale : ") + std::to_string(CurrentScale));
 }
 
 // 메시를 그리는 함수
