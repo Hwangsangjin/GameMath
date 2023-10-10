@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 #include "Precompiled.h"
 #include "SoftRenderer.h"
 #include <random>
@@ -89,8 +89,10 @@ void SoftRenderer::Render2D()
 	DrawGizmo2D();
 
 	// 렌더링 로직의 로컬 변수
+	static float Increment = 0.001f;
 	static float Radius = 50.0f;
-	static std::vector<Vector2> Circles;
+	static std::vector<Vector2> Hearts;
+	HSVColor HSV(0.0f, 1.0f, 0.85f);
 
 	// 하트를 구성하는 점 생성
 	if (Hearts.empty())
@@ -108,10 +110,13 @@ void SoftRenderer::Render2D()
 		}
 	}
 
-	// 하트를 구성하는 모든 점에 현재 위치와 크기 값을 반영한 후 파란색으로 표시한다. 
+	// 각 값을 초기화한 후 색상을 증가시키면서 점에 대응
+	float Rad = 0.0f;
 	for (const auto& i : Hearts)
 	{
-		r.DrawPoint(i * CurrentScale + CurrentPosition, LinearColor::Blue);
+		HSV.H = Rad / Math::TwoPI;
+		r.DrawPoint(i * CurrentScale + CurrentPosition, HSV.ToLinearColor());
+		Rad += Increment;
 	}
 
 	// 현재 위치와 스케일을 화면에 출력
