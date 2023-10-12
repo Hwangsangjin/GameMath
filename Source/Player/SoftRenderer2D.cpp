@@ -55,6 +55,7 @@ void SoftRenderer::LoadScene2D()
 // 게임 로직과 렌더링 로직이 공유하는 변수
 Vector2 CurrentPosition;
 float CurrentScale = 10.0f;
+float CurrentDegree = 0.0f;
 
 // 게임 로직을 담당하는 함수
 void SoftRenderer::Update2D(float InDeltaSeconds)
@@ -67,21 +68,18 @@ void SoftRenderer::Update2D(float InDeltaSeconds)
 	static float MoveSpeed = 100.0f;
 	static float ScaleMin = 5.0f;
 	static float ScaleMax = 20.0f;
-	static float Duration = 1.5f;
-	static float ElapsedTime = 0.0f;
+	static float ScaleSpeed = 20.0f;
+	static float RotateSpeed = 180.0f;
 
 	Vector2 InputVector = Vector2(input.GetAxis(InputAxis::XAxis), input.GetAxis(InputAxis::YAxis)).GetNormalize();
 	Vector2 DeltaPosition = InputVector * MoveSpeed * InDeltaSeconds;
-
-	// 경과 시간과 sin 함수를 활용한 [0, 1] 값의 생성
-	ElapsedTime += InDeltaSeconds;
-	ElapsedTime = Math::FMod(ElapsedTime, Duration);
-	float CurrentRad = (ElapsedTime / Duration) * Math::TwoPI;
-	float Alpha = (sinf(CurrentRad) + 1) * 0.5f;
+	float DeltaScale = input.GetAxis(InputAxis::ZAxis) * ScaleSpeed * InDeltaSeconds;
+	float DeltaDegree = input.GetAxis(InputAxis::WAxis) * RotateSpeed * InDeltaSeconds;
 
 	// 물체의 최종 상태 설정
 	CurrentPosition += DeltaPosition;
-	CurrentScale = Math::Lerp(ScaleMin, ScaleMax, Alpha);
+	CurrentScale = Math::Clamp(CurrentScale + DeltaScale, ScaleMin, ScaleMax);
+	CurrentDegree += DeltaDegree;
 }
 
 // 렌더링 로직을 담당하는 함수
@@ -116,18 +114,30 @@ void SoftRenderer::Render2D()
 		}
 	}
 
+	// 각도에 해당하는 사인과 코사인 값 얻기
+	float Sin = 0.0f, Cos = 0.0f;
+	Math::GetSinCos(Sin, Cos, CurrentDegree);
+
 	// 각 값을 초기화한 후 색상을 증가시키면서 점에 대응
 	float Rad = 0.0f;
 	for (const auto& i : Hearts)
 	{
+		// 1. 점에 크기를 적용한다.
+		Vector2 ScaledV = i * CurrentScale;
+		// 2. 크기가 변한 점을 회전시킨다.
+		Vector2 RotatedV = Vector2(ScaledV.X * Cos - ScaledV.Y * Sin, ScaledV.X * Sin + ScaledV.Y * Cos);
+		// 3. 회전시킨 점을 이동한다.
+		Vector2 TranslatedV = RotatedV + CurrentPosition;
+
 		HSV.H = Rad / Math::TwoPI;
-		r.DrawPoint(i * CurrentScale + CurrentPosition, HSV.ToLinearColor());
+		r.DrawPoint(TranslatedV, HSV.ToLinearColor());
 		Rad += Increment;
 	}
 
-	// 현재 위치와 스케일을 화면에 출력
+	// 현재 위치, 크기, 각도를 화면에 출력
 	r.PushStatisticText(std::string("Position : ") + CurrentPosition.ToString());
 	r.PushStatisticText(std::string("Scale : ") + std::to_string(CurrentScale));
+	r.PushStatisticText(std::string("Degree : ") + std::to_string(CurrentDegree));
 }
 
 // 메시를 그리는 함수
